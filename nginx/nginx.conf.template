@@ -15,6 +15,12 @@ http {
   proxy_buffers             4 256k;
   proxy_busy_buffers_size   256k;
 
+  # ── Upstream pool (intenta 2 puertos comunes en la imagen de Vaultwarden)
+  upstream vault_backend {
+    server ${VAULT_UPSTREAM}:80;
+    server ${VAULT_UPSTREAM}:8000 backup;
+  }
+
   server {
     listen ${PORT};
 
@@ -29,11 +35,6 @@ http {
       add_header Cache-Control "public, max-age=86400";
     }
 
-    # ── Upstream pool (intenta 2 puertos comunes en la imagen de Vaultwarden)
-    upstream vault_backend {
-      server ${VAULT_UPSTREAM}:80;
-      server ${VAULT_UPSTREAM}:8000 backup;
-    }
 
     # ── Proxy general a Vaultwarden ───────────────────────────
     location / {
