@@ -1,0 +1,54 @@
+version: "3.9"
+
+# ─────────────────────────────────────────────────────────────
+# chumbo Vault — desarrollo local
+#
+# Uso:
+#   docker-compose up -d
+#   Abrir http://localhost:8080
+#
+# En producción (Railway):
+#   - Servicio "vaultwarden"  → imagen vaultwarden/server:latest + volumen /data
+#   - Servicio "vault-proxy"  → este Dockerfile
+#   - vault-proxy apunta a la URL privada de Railway del servicio vaultwarden
+# ───────────────────────────────���─────────────────────────────
+
+services:
+
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: chumbo-vault-core
+    restart: unless-stopped
+    environment:
+      DOMAIN:            "https://192.168.1.7:8443"   # ← HTTPS con el puerto del proxy
+      SIGNUPS_ALLOWED:   "true"        # ← poner false después de crear la cuenta
+      WEBSOCKET_ENABLED: "true"
+      LOG_LEVEL:         "warn"
+      # ADMIN_TOKEN: "genera uno con: openssl rand -base64 48"
+    volumes:
+      - vaultwarden_data:/data
+    expose:
+      - "80"
+      - "3012"
+
+  vault-proxy:
+    build: .
+    container_name: chumbo-vault-proxy
+    restart: unless-stopped
+    depends_on:
+      - vaultwarden
+    environment:
+      VAULT_UPSTREAM: "vaultwarden"   # nombre del servicio en docker-compose
+      PORT: "8443"
+    # Para desarrollo local con HTTPS — sobreescribir la conf generada
+    # con la versión SSL después de que start.sh genere la HTTP
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro   # conf HTTPS local (override)
+      - ./certs:/etc/nginx/certs:ro                   # certificados mkcert
+    ports:
+      - "8080:8080"   # HTTP → redirige a HTTPS (ver nginx.conf local)
+      - "8443:8443"   # HTTPS
+
+volumes:
+  vaultwarden_data:
+    driver: local

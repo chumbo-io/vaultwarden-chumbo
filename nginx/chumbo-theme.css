@@ -1,0 +1,61 @@
+/* ============================================================
+   chumbo Vault — tema visual sobre Vaultwarden
+   Colores base: chumbo.io brand (#F97316 naranja)
+   Estrategia: override de --color-brand-* (paleta raíz)
+   Todo lo demás (botones, links, bordes) hereda automáticamente
+   ============================================================ */
+
+/* ── Paleta de marca chumbo (reemplaza el azul Bitwarden/brand) ── */
+/* Vaultwarden define --color-brand-N como hex directos → mismo formato */
+html,
+html.theme_light,
+html.theme_dark {
+  --color-brand-050: #fff7ed;
+  --color-brand-100: #ffedd5;
+  --color-brand-200: #fed7aa;
+  --color-brand-300: #fdba74;
+  --color-brand-400: #fb923c;   /* botón normal en tema light */
+  --color-brand-500: #f97316;   /* naranja chumbo principal */
+  --color-brand-600: #ea580c;
+  --color-brand-700: #c2410c;   /* botón normal en tema dark */
+  --color-brand-800: #9a3412;
+  --color-brand-900: #7c2d12;
+  --color-brand-950: #431407;
+
+  /* El azul fijo de Bitwarden (bwi-blue) → naranja */
+  --color-bw-blue: 249 115 22;
+
+  /* Ilustraciones SVG */
+  --color-illustration-logo:    249 115 22;
+  --color-primary-600:          249 115 22;
+  --color-primary-700:          234  88  4;
+}
+
+/* ── Logo: el SVG de Vaultwarden es inline (Angular) — ocultarlo ──
+   y mostrar el logo de chumbo como background en el <a> contenedor */
+bit-landing-header a[href="#/"] {
+  background-image: url('/chumbo-logo.svg') !important;
+  background-repeat: no-repeat !important;
+  background-position: left center !important;
+  background-size: contain !important;
+  min-height: 40px !important;
+  min-width: 130px !important;
+}
+
+bit-landing-header a[href="#/"] bit-svg {
+  visibility: hidden !important;  /* oculta el SVG pero preserva el espacio */
+}
+
+/* ── Tagline flotante en esquina inferior derecha ── */
+body::after {
+  content: "chumbo Vault  ·  powered by Vaultwarden CE";
+  position: fixed;
+  bottom: 8px;
+  right: 14px;
+  font-size: 10px;
+  color: rgba(128, 128, 128, 0.4);
+  pointer-events: none;
+  z-index: 99999;
+  font-family: ui-monospace, monospace;
+  letter-spacing: 0.03em;
+}

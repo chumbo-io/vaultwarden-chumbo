@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 270" role="img" aria-label="chumbo.io logo">
+  <title>chumbo.io</title>
+
+  <!-- ── ICONO: contenido idéntico a icon.svg ──────────── -->
+  <svg x="0" y="0" width="200" height="270" viewBox="0 0 200 270">
+    <defs>
+      <mask id="bite">
+        <rect width="200" height="270" fill="white"/>
+        <circle cx="163" cy="116" r="36" fill="black"/>
+      </mask>
+      <clipPath id="body-clip">
+        <path d="M100,56 C75,56 54,70 46,90
+                 C34,120 32,165 52,200
+                 C64,220 80,232 100,234
+                 C120,232 136,220 148,200
+                 C168,165 166,118 158,86
+                 C152,57 125,56 100,56Z"/>
+      </clipPath>
+    </defs>
+
+    <path d="M100,56 C75,56 54,70 46,90
+             C34,120 32,165 52,200
+             C64,220 80,232 100,234
+             C120,232 136,220 148,200
+             C168,165 166,118 158,86
+             C152,57 125,56 100,56Z"
+          fill="#9B1D35" mask="url(#bite)"/>
+
+    <g fill="#7A1528" clip-path="url(#body-clip)" mask="url(#bite)">
+      <circle cx="70"  cy="103" r="2.5"/>
+      <circle cx="88"  cy="91"  r="2.5"/>
+      <circle cx="103" cy="81"  r="2.5"/>
+      <circle cx="57"  cy="135" r="2.5"/>
+      <circle cx="74"  cy="123" r="2.5"/>
+      <circle cx="91"  cy="112" r="2.5"/>
+      <circle cx="54"  cy="166" r="2.5"/>
+      <circle cx="70"  cy="153" r="2.5"/>
+      <circle cx="87"  cy="142" r="2.5"/>
+      <circle cx="104" cy="132" r="2.5"/>
+      <circle cx="58"  cy="196" r="2.5"/>
+      <circle cx="74"  cy="183" r="2.5"/>
+      <circle cx="90"  cy="173" r="2.5"/>
+    </g>
+
+    <g fill="#9B1D35">
+      <path d="M97,48 C96,40 98,32 101,26
+                      C104,32 104,40 103,48 Z"/>
+      <path d="M102,37 C114,29 126,23 128,22
+                       C128,26 120,35 103,42 Z"/>
+    </g>
+  </svg>
+
+  <!-- ── WORDMARK ───────────────────────────────────────── -->
+  <text
+    x="228" y="148"
+    dominant-baseline="middle"
+    font-family="'Space Grotesk', 'Plus Jakarta Sans', Inter, system-ui, -apple-system, sans-serif"
+    font-size="90"
+  >
+    <tspan font-weight="700" fill="#9B1D35">chumbo</tspan><tspan font-weight="300" fill="#F4A523">.io</tspan>
+  </text>
+</svg>
+

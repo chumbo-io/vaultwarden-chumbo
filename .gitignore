@@ -1,0 +1,6 @@
+# Ignorar
+.env
+*.env.local
+data/
+certs/*.key
+certs/rootCA-mkcert.pem
