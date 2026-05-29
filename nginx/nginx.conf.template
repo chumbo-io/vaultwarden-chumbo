@@ -29,13 +29,30 @@ http {
       add_header Cache-Control "public, max-age=86400";
     }
 
+    # ── Upstream pool (intenta 2 puertos comunes en la imagen de Vaultwarden)
+    upstream vault_backend {
+      server ${VAULT_UPSTREAM}:80;
+      server ${VAULT_UPSTREAM}:8000 backup;
+    }
+
     # ── Proxy general a Vaultwarden ───────────────────────────
     location / {
-      proxy_pass         http://${VAULT_UPSTREAM}:80;
+      proxy_pass         http://vault_backend;
       proxy_set_header   Host              $host;
       proxy_set_header   X-Real-IP         $remote_addr;
       proxy_set_header   X-Forwarded-For   $proxy_add_x_forwarded_for;
       proxy_set_header   X-Forwarded-Proto $scheme;
+
+      # Timeouts más tolerantes para evitar 502/504 por backend lento
+      proxy_connect_timeout 10s;
+      proxy_send_timeout    30s;
+      proxy_read_timeout    30s;
+      proxy_buffer_size     64k;
+      proxy_buffers         8 64k;
+      proxy_busy_buffers_size 128k;
+
+      # Mejor comportamiento en failover
+      proxy_next_upstream error timeout invalid_header http_500 http_502 http_503 http_504;
 
       sub_filter_once off;
       sub_filter_types text/html;
