@@ -1,52 +1,58 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 270" role="img" aria-label="chumbo.io logo">
   <title>chumbo.io</title>
 
-  <!-- ── ICONO: contenido idéntico a icon.svg ──────────── -->
+  <!-- ── ICONO: NUEVO diseño sin mordisco ──────────── -->
   <svg x="0" y="0" width="200" height="270" viewBox="0 0 200 270">
     <defs>
-      <mask id="bite">
-        <rect width="200" height="270" fill="white"/>
-        <circle cx="163" cy="116" r="36" fill="black"/>
-      </mask>
       <clipPath id="body-clip">
-        <path d="M100,56 C75,56 54,70 46,90
-                 C34,120 32,165 52,200
-                 C64,220 80,232 100,234
-                 C120,232 136,220 148,200
-                 C168,165 166,118 158,86
-                 C152,57 125,56 100,56Z"/>
+        <!-- Forma más ovalada y vertical característica del higo chumbo -->
+        <ellipse cx="100" cy="130" rx="48" ry="80"/>
       </clipPath>
     </defs>
 
-    <path d="M100,56 C75,56 54,70 46,90
-             C34,120 32,165 52,200
-             C64,220 80,232 100,234
-             C120,232 136,220 148,200
-             C168,165 166,118 158,86
-             C152,57 125,56 100,56Z"
-          fill="#9B1D35" mask="url(#bite)"/>
+    <!-- Cuerpo principal del chumbo - forma ovalada vertical -->
+    <ellipse cx="100" cy="130" rx="48" ry="80" fill="#9B1D35"/>
 
-    <g fill="#7A1528" clip-path="url(#body-clip)" mask="url(#bite)">
-      <circle cx="70"  cy="103" r="2.5"/>
-      <circle cx="88"  cy="91"  r="2.5"/>
-      <circle cx="103" cy="81"  r="2.5"/>
-      <circle cx="57"  cy="135" r="2.5"/>
-      <circle cx="74"  cy="123" r="2.5"/>
-      <circle cx="91"  cy="112" r="2.5"/>
-      <circle cx="54"  cy="166" r="2.5"/>
-      <circle cx="70"  cy="153" r="2.5"/>
-      <circle cx="87"  cy="142" r="2.5"/>
-      <circle cx="104" cy="132" r="2.5"/>
-      <circle cx="58"  cy="196" r="2.5"/>
-      <circle cx="74"  cy="183" r="2.5"/>
-      <circle cx="90"  cy="173" r="2.5"/>
+    <!-- Textura de aréolas características del chumbo (más distribuidas) -->
+    <g fill="#7A1528" clip-path="url(#body-clip)">
+      <circle cx="70"  cy="85"  r="2.5"/>
+      <circle cx="90"  cy="75"  r="2.5"/>
+      <circle cx="110" cy="80"  r="2.5"/>
+      <circle cx="130" cy="95"  r="2.5"/>
+      <circle cx="65"  cy="110" r="2.5"/>
+      <circle cx="85"  cy="100" r="2.5"/>
+      <circle cx="105" cy="105" r="2.5"/>
+      <circle cx="125" cy="120" r="2.5"/>
+      <circle cx="60"  cy="135" r="2.5"/>
+      <circle cx="80"  cy="125" r="2.5"/>
+      <circle cx="100" cy="130" r="2.5"/>
+      <circle cx="120" cy="135" r="2.5"/>
+      <circle cx="65"  cy="160" r="2.5"/>
+      <circle cx="85"  cy="155" r="2.5"/>
+      <circle cx="105" cy="160" r="2.5"/>
+      <circle cx="125" cy="165" r="2.5"/>
+      <circle cx="70"  cy="185" r="2.5"/>
+      <circle cx="90"  cy="180" r="2.5"/>
+      <circle cx="110" cy="185" r="2.5"/>
+      <circle cx="130" cy="190" r="2.5"/>
     </g>
 
+    <!-- Corona floral en la parte superior (característica única del higo chumbo) -->
     <g fill="#9B1D35">
-      <path d="M97,48 C96,40 98,32 101,26
-                      C104,32 104,40 103,48 Z"/>
-      <path d="M102,37 C114,29 126,23 128,22
-                       C128,26 120,35 103,42 Z"/>
+      <!-- Pétalos de la corona -->
+      <ellipse cx="88" cy="52" rx="6" ry="10" transform="rotate(-25 88 52)"/>
+      <ellipse cx="100" cy="48" rx="6" ry="12"/>
+      <ellipse cx="112" cy="52" rx="6" ry="10" transform="rotate(25 112 52)"/>
+      <!-- Detalles adicionales de la corona -->
+      <circle cx="94" cy="57" r="3"/>
+      <circle cx="106" cy="57" r="3"/>
+    </g>
+
+    <!-- Detalle decorativo naranja en la corona -->
+    <g fill="#F4A523" opacity="0.7">
+      <circle cx="100" cy="53" r="2.5"/>
+      <circle cx="94" cy="58" r="1.5"/>
+      <circle cx="106" cy="58" r="1.5"/>
     </g>
   </svg>
 
